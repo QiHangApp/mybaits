@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--环境配置：数据库的连接信息-->
+    <environments default="development">
+        <!--
+            enviroment: 一个数据库信息的配置，环境
+            id：一个唯一值，自定义，表示环境的名称。
+        -->
+        <environment id="mydev">
+            <!--
+                transactionManager : mybatis的事务类型
+                    type：JDBC(表示使用jdbc中的Connection对象的commit，rollvack做事务处理)
+            -->
+            <transactionManager type="JDBC"/>
+
+            <dataSource type="POOLED">
+                <!--
+                    driver,user,username,password 是固定的，不能自定义。
+                -->
+                <!--数据库的驱动类名-->
+                <property name="driver" value="${driver}"/>
+                <!--连接数据库的url字符串-->
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+    </mappers>
+</configuration>

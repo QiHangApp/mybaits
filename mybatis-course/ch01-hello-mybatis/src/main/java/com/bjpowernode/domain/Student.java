@@ -1,4 +1,4 @@
-package com.bjpowenode.domain;
+package com.bjpowernode.domain;
 
 /**
  * 实体类

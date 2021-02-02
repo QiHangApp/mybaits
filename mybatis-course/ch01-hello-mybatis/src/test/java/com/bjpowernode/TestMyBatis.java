@@ -11,10 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class TestMyBatis {
-    /**
-     * 你还等好傻
-     * @throws IOException
-     */
+
     //测试方法
     @Test
     public void testInsert() throws IOException {
@@ -34,8 +31,8 @@ public class TestMyBatis {
         String sqlId = "com.bjpowernode.dao.StudentDao.insertStudent";
         //7.[重要]执行sql语句，通过sqlId找到语句
         Student student = new Student();
-        student.setId(1007);
-        student.setName("张飞");
+        student.setId(1008);
+        student.setName("");
         student.setEmail("zhangfei@163.com");
         student.setAge(20);
         int nums = sqlSession.insert(sqlId,student);

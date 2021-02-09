@@ -32,7 +32,7 @@ public class TestMyBatis {
         //7.[重要]执行sql语句，通过sqlId找到语句
         Student student = new Student();
         student.setId(1008);
-        student.setName("");
+        student.setName("夏侯惇");
         student.setEmail("zhangfei@163.com");
         student.setAge(20);
         int nums = sqlSession.insert(sqlId,student);

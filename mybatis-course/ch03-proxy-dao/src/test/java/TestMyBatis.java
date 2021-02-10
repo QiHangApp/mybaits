@@ -16,7 +16,8 @@ public class TestMyBatis {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         //mybatis动态代理机制
         StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
-
+        //com.sun.proxy.$Proxy2 : jdk的动态代理
+        System.out.println("dao="+ studentDao.getClass().getName());
         List<Student> studentList = studentDao.selectStudents();
         for (Student student : studentList) {
             System.out.println(student);

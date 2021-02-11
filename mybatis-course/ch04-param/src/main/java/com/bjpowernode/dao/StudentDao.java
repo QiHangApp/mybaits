@@ -31,5 +31,12 @@ public interface StudentDao {
     List<Student> selectMultiObject(QueryParam param);
 
     List<Student> selectMultiStudent(Student student);
+
+    /**
+     * 多个参数-简单类型的，按位置传指，
+     * mybatis 3.4之前，使用#{0}，#{1}
+     * mybatis 3.4之后，使用#{arg0}，#{arg1}
+     */
+    List<Student> selectMultiPosition(String name, Integer age);
 }
 

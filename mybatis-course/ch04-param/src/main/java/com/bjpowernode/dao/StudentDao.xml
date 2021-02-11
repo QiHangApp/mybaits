@@ -68,8 +68,8 @@
     </select>
 
     <!--多个参数使用位置-->
-    <select id="selectPostdion" resultType="com.bjpowernode.domain.Student">
-        select id, name, email, age, from student where
-        name = #{arg0} or age=#{arg1}
+    <select id="selectMultiPosition" resultType="com.bjpowernode.domain.Student">
+        select id, name, email, age from student where
+        name=#{arg0} or age=#{arg1}
     </select>
 </mapper>

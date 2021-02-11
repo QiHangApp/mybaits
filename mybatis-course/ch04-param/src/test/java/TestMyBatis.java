@@ -66,4 +66,15 @@ public class TestMyBatis {
         sqlSession.close();
     }
 
+    @Test
+    public void testSelectMultiPosition() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> students = studentDao.selectMultiPosition("夏侯惇", 28);
+        for (Student stu : students) {
+            System.out.println("学生="+stu);
+        }
+        sqlSession.close();
+    }
 }

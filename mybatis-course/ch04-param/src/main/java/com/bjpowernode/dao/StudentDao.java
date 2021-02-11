@@ -1,6 +1,7 @@
 package com.bjpowernode.dao;
 
 import com.bjpowernode.domain.Student;
+import com.bjpowernode.vo.QueryParam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,5 +24,12 @@ public interface StudentDao {
      */
     List<Student> selectMultiParam(@Param("myname") String name,
                                    @Param("myage") Integer age);
+
+    /**
+     * 多个参数，使用java对象作为接口中方法的参数
+     */
+    List<Student> selectMultiObject(QueryParam param);
+
+    List<Student> selectMultiStudent(Student student);
 }
 

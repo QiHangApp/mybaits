@@ -1,9 +1,11 @@
 import com.bjpowernode.dao.StudentDao;
 import com.bjpowernode.domain.Student;
 import com.bjpowernode.utils.MyBatisUtils;
+import com.bjpowernode.vo.QueryParam;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -34,5 +36,34 @@ public class TestMyBatis {
         sqlSession.close();
     }
 
+    @Test
+    public void testSelectMultiObject() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+        QueryParam param = new QueryParam();
+        param.setParamAge(28);
+        param.setParamName("夏侯惇");
+        List<Student> students = studentDao.selectMultiObject(param);
+
+        for (Student student : students) {
+            System.out.println("学生="+student);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectMultiStudent() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+        Student student = new Student();
+        student.setName("夏侯惇");
+        student.setAge(28);
+        List<Student> students = studentDao.selectMultiStudent(student);
+
+        for (Student stu : students) {
+            System.out.println("学生="+stu);
+        }
+        sqlSession.close();
+    }
 
 }

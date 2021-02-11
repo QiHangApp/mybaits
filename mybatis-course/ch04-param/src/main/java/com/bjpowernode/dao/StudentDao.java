@@ -1,6 +1,7 @@
 package com.bjpowernode.dao;
 
 import com.bjpowernode.domain.Student;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,5 +17,11 @@ public interface StudentDao {
      *  在mapper文件获取简单类型的一个参数的值，使用#{任意字符}
      */
     public Student selectStudentById(Integer id);
+
+    /**
+     * 多个参数：命名参数，在形参定义的前面加入@Param("自定义参数名称")
+     */
+    List<Student> selectMultiParam(@Param("myname") String name,
+                                   @Param("myage") Integer age);
 }
 

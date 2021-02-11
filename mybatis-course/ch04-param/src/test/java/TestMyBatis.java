@@ -21,6 +21,18 @@ public class TestMyBatis {
         Student student = studentDao.selectStudentById(1007);
         System.out.println(student);
     }
+    @Test
+    public void testSelectMutilParam() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper((StudentDao.class));
+
+        List<Student> students = dao.selectMultiParam("李四", 20);
+
+        for (Student student : students) {
+            System.out.println("学生="+student);
+        }
+        sqlSession.close();
+    }
 
 
 }

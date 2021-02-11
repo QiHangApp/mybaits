@@ -35,5 +35,9 @@
     <select id="selectStudentById" parameterType="int" resultType="com.bjpowernode.domain.Student">
         select id,name,email,age from student where id=#{id}
     </select>
+    <!--多个参数，使用@Param命名-->
+    <select id="selectMultiParam" resultType="com.bjpowernode.domain.Student">
+        select id, name, email, age from student where name=#{myname} or age=#{myage}
+    </select>
 
 </mapper>

@@ -72,4 +72,10 @@
         select id, name, email, age from student where
         name=#{arg0} or age=#{arg1}
     </select>
+
+    <!--多个参数，使用Map，使用语法#{map的key} 不建议用-->
+    <select id="selectMultiByMap" resultType="com.bjpowernode.domain.Student">
+        select id, name, email, age from student where
+        name={myname} or age=#{age1}
+    </select>
 </mapper>

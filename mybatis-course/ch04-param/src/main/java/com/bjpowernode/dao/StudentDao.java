@@ -5,6 +5,7 @@ import com.bjpowernode.vo.QueryParam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lqh
@@ -38,5 +39,10 @@ public interface StudentDao {
      * mybatis 3.4之后，使用#{arg0}，#{arg1}
      */
     List<Student> selectMultiPosition(String name, Integer age);
+
+    /**
+     * 多个参数，使用Map存放多个值
+     */
+    List<Student> selectMultiByMap(Map<String, Object> map);
 }
 

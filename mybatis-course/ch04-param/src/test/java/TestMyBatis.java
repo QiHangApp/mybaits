@@ -6,7 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lqh
@@ -71,6 +73,20 @@ public class TestMyBatis {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
 
+        List<Student> students = studentDao.selectMultiPosition("夏侯惇", 28);
+        for (Student stu : students) {
+            System.out.println("学生="+stu);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectMultiByMap() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+        Map<String, Object> data = new HashMap<>();
+        data.put("myname", "夏侯惇");
+        data.put("age1",28);
         List<Student> students = studentDao.selectMultiPosition("夏侯惇", 28);
         for (Student stu : students) {
             System.out.println("学生="+stu);

@@ -78,4 +78,14 @@
         select id, name, email, age from student where
         name={myname} or age=#{age1}
     </select>
+
+    <!--使用${} 建议用#-->
+    <select id="selectUse$" resultType="com.bjpowernode.domain.Student">
+        select * from student where name=${myname}
+    </select>
+
+    <!--替换列名-->
+    <select id="selectUse$Order" resultType="com.bjpowernode.domain.Student">
+        select * from student order by ${colName}
+    </select>
 </mapper>

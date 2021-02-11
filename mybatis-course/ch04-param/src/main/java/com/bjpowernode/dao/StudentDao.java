@@ -44,5 +44,10 @@ public interface StudentDao {
      * 多个参数，使用Map存放多个值
      */
     List<Student> selectMultiByMap(Map<String, Object> map);
+
+    List<Student> selectUse$(@Param("myname") String name);
+
+    List<Student> selectUse$Order(@Param("colName") String colName);
+
 }
 

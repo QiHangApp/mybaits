@@ -87,9 +87,35 @@ public class TestMyBatis {
         Map<String, Object> data = new HashMap<>();
         data.put("myname", "夏侯惇");
         data.put("age1",28);
-        List<Student> students = studentDao.selectMultiPosition("夏侯惇", 28);
+        List<Student> students = studentDao.selectMultiByMap(data);
         for (Student stu : students) {
             System.out.println("学生="+stu);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectUse$() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> students = dao.selectUse$("'夏侯惇'");
+
+        for (Student student : students) {
+            System.out.println("学生=" + student);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectUse$Order() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> students = dao.selectUse$Order("age");
+
+        for (Student student : students) {
+            System.out.println("学生=" + student);
         }
         sqlSession.close();
     }

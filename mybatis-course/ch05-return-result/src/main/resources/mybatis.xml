@@ -9,6 +9,21 @@
         <!--设置mybatis输出日志-->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
+
+    <!--定义resultType别名-->
+    <typeAliases>
+        <!--第一种方式：
+            可以指定一个类型一个自定义别名
+            type:自定义类型的全限定名称
+            alias:别名（短小，容易记忆的）-->
+
+        <!--<typeAlias type="com.bjpowernode.domain.Student" alias="stu"/>
+        <typeAlias type="com.bjpowernode.vo.ViewStudent" alias="vstu"/>-->
+        <!--第二种方式：
+            <package> name是包名，这个包中的所有类，类名就是别名resultType（类名不区分大小写）-->
+        <package name="com.bjpowernode.domain"/>
+        <package name="com.bjpowernode.vo"/>
+    </typeAliases>
     <environments default="mydev">
         <environment id="mydev">
             <transactionManager type="JDBC"/>

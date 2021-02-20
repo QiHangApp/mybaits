@@ -49,4 +49,14 @@ public class TestMyBatis {
         System.out.println("1005 student=" + student);
     }
 
+    @Test
+    public void testSelectCount() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        int counts = dao.countStudent();
+
+        System.out.println("学生数量 = " + counts);
+    }
+
 }

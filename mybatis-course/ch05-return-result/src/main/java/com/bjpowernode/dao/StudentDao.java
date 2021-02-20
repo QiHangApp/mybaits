@@ -22,7 +22,7 @@ public interface StudentDao {
 
     ViewStudent selectStudentReturnViewStudent(@Param("sid") Integer id);
 
-
+    int countStudent();
 
 
 }

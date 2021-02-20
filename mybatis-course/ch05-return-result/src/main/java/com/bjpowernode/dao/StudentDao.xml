@@ -13,10 +13,14 @@
     </select>
 
     <!--selectStudentReturnViewStudent-->
-    <select id="selectStudentReturnViewStudent" resultType="com.bjpowernode.vo.ViewStudent">
+    <!--<select id="selectStudentReturnViewStudent" resultType="com.bjpowernode.vo.ViewStudent">-->
+    <select id="selectStudentReturnViewStudent" resultType="ViewStudent">
         select id, name from student where id=#{sid}
     </select>
 
-
-
+    <!--sql执行返回count-->
+    <!--<select id="countStudent" resultType="int">-->
+    <select id="countStudent" resultType="java.lang.Integer">
+        select count(*) from student
+    </select>
 </mapper>

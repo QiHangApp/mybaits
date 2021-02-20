@@ -30,5 +30,30 @@
     <select id="selectMapById" resultType="java.util.HashMap">
         select id, name, email from student where id=#{stuid}
     </select>
+    <!--
+        使用reusltMap
+        1）先定义resultMap
+        2）在select标签，使用resultMap来引用1定义的。
+    -->
+    <!--
+        定义resultMap
+        id：自定义名称，表示你定义的这个resultMap
+        type:java类型的全限定名称
+    -->
+    <resultMap id="studentMap" type="com.bjpowernode.domain.Student">
+        <!--列名和java属性的关系-->
+        <!--注解列，使用id标签
+            column:列名
+            property：java的属性名
+        -->
+        <id column="id" property="id"/>
+        <!--非主键列，使用result-->
+        <result column="name" property="name"/>
+        <result column="emial" property="email"/>
+        <result column="age" property="age"/>
+    </resultMap>
+    <select id="selectAllStudents" resultMap="studentMap">
+        select id, name, email, age from student
+    </select>
 
 </mapper>

@@ -27,5 +27,9 @@ public interface StudentDao {
     //定义方法返回Map
     Map<Object, Object> selectMapById(Integer id);
 
+    /**
+     * 使用resultMap定义映射关系
+     */
+    List<Student> selectAllStudents();
 }
 

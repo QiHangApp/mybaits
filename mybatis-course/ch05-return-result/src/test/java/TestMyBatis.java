@@ -25,6 +25,7 @@ public class TestMyBatis {
         System.out.println("dao="+ studentDao.getClass().getName());
         Student student = studentDao.selectStudentById(1007);
         System.out.println(student);
+        sqlSession.close();
     }
     @Test
     public void testSelectMutilParam() {
@@ -47,6 +48,7 @@ public class TestMyBatis {
         ViewStudent student = dao.selectStudentReturnViewStudent(1005);
 
         System.out.println("1005 student=" + student);
+        sqlSession.close();
     }
 
     @Test
@@ -57,6 +59,7 @@ public class TestMyBatis {
         int counts = dao.countStudent();
 
         System.out.println("学生数量 = " + counts);
+        sqlSession.close();
     }
 
     //返回map
@@ -68,5 +71,20 @@ public class TestMyBatis {
         Map<Object, Object> map = dao.selectMapById(1001);
 
         System.out.println("map = " + map);
+        sqlSession.close();
+    }
+
+    //========================================
+    @Test
+    public void testSelectAllStudents() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> students = dao.selectAllStudents();
+
+        for (Student student : students) {
+            System.out.println("学生 = " + student);
+        }
+        sqlSession.close();
     }
 }

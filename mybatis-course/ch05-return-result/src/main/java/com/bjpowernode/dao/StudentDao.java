@@ -24,6 +24,8 @@ public interface StudentDao {
 
     int countStudent();
 
+    //定义方法返回Map
+    Map<Object, Object> selectMapById(Integer id);
 
 }
 

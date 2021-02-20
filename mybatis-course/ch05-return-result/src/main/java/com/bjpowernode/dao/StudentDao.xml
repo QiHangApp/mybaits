@@ -23,4 +23,12 @@
     <select id="countStudent" resultType="java.lang.Integer">
         select count(*) from student
     </select>
+
+    <!--返回Map
+        1)列名是map的key，列值是map的value
+        2)只能最多返回一行记录，多余一行是错误的-->
+    <select id="selectMapById" resultType="java.util.HashMap">
+        select id, name, email from student where id=#{stuid}
+    </select>
+
 </mapper>

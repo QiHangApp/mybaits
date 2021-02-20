@@ -59,4 +59,14 @@ public class TestMyBatis {
         System.out.println("学生数量 = " + counts);
     }
 
+    //返回map
+    @Test
+    public void testSelectMap() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        Map<Object, Object> map = dao.selectMapById(1001);
+
+        System.out.println("map = " + map);
+    }
 }

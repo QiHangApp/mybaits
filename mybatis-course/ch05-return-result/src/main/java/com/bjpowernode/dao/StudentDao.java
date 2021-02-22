@@ -35,5 +35,10 @@ public interface StudentDao {
     List<MyStudent> selectMyStudent();
 
     List<MyStudent> selectDiffColProperty();
+
+    /*第一种模糊查询，在java代码指定like的内容*/
+    List<Student> selectLikeOne(String name);
+
+    List<Student> selectLikeTwo(String name);
 }
 

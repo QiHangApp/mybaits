@@ -88,18 +88,6 @@ public class TestMyBatis {
     }
 
     @Test
-    public void testSelectAllStudents2() {
-        SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        StudentDao dao = sqlSession.getMapper(StudentDao.class);
-
-        List<MyStudent> myStudents = dao.selectMyStudent();
-
-        for (MyStudent myStudent : myStudents) {
-            System.out.println("学生 = " + myStudent);
-        }
-        sqlSession.close();
-    }
-    @Test
     public void testSelectDiffcolProperty() {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         StudentDao dao = sqlSession.getMapper(StudentDao.class);
@@ -111,4 +99,47 @@ public class TestMyBatis {
         }
         sqlSession.close();
     }
+    @Test
+    public void testSelectAllStudents2() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<MyStudent> myStudents = dao.selectMyStudent();
+
+        for (MyStudent myStudent : myStudents) {
+            System.out.println("学生 = " + myStudent);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelctLikeOne() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        //准备好like的内容
+        String name = "%张%";
+        List<Student> students = dao.selectLikeOne(name);
+
+        for (Student student : students) {
+            System.out.println("学生 = " + student);
+        }
+        sqlSession.close();
+    }
+    @Test
+    public void testSelectTow() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        //准备好like的内容
+        String name = "张";
+        List<Student> students = dao.selectLikeTwo(name);
+
+        for (Student student : students) {
+            System.out.println("***********学生 = " + student);
+        }
+        sqlSession.close();
+    }
+
+
 }

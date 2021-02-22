@@ -13,12 +13,15 @@
         <module name="ch05-return-result" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11">
       <module name="ch01-hello-mybatis" target="11" />
       <module name="ch02-mybatis-dao" target="11" />
       <module name="ch03-proxy-dao" target="11" />
       <module name="ch04-param" target="11" />
       <module name="ch05-return-result" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding utf-8" />
   </component>
 </project>

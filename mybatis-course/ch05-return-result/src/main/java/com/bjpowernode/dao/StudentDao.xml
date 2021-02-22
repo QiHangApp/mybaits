@@ -5,30 +5,40 @@
 <mapper namespace="com.bjpowernode.dao.StudentDao">
 
     <select id="selectStudentById" parameterType="int" resultType="com.bjpowernode.domain.Student">
-        select id,name,email,age from student where id=#{id}
+        select id, name, email, age
+        from student
+        where id = #{id}
     </select>
     <!--多个参数，使用@Param命名-->
     <select id="selectMultiParam" resultType="com.bjpowernode.domain.Student">
-        select id, name, email, age from student where name=#{myname} or age=#{myage}
+        select id, name, email, age
+        from student
+        where name = #{myname}
+           or age = #{myage}
     </select>
 
     <!--selectStudentReturnViewStudent-->
     <!--<select id="selectStudentReturnViewStudent" resultType="com.bjpowernode.vo.ViewStudent">-->
     <select id="selectStudentReturnViewStudent" resultType="ViewStudent">
-        select id, name from student where id=#{sid}
+        select id, name
+        from student
+        where id = #{sid}
     </select>
 
     <!--sql执行返回count-->
     <!--<select id="countStudent" resultType="int">-->
     <select id="countStudent" resultType="java.lang.Integer">
-        select count(*) from student
+        select count(*)
+        from student
     </select>
 
     <!--返回Map
         1)列名是map的key，列值是map的value
         2)只能最多返回一行记录，多余一行是错误的-->
     <select id="selectMapById" resultType="java.util.HashMap">
-        select id, name, email from student where id=#{stuid}
+        select id, name, email
+        from student
+        where id = #{stuid}
     </select>
     <!--
         使用reusltMap
@@ -53,7 +63,32 @@
         <result column="age" property="age"/>
     </resultMap>
     <select id="selectAllStudents" resultMap="studentMap">
-        select id, name, email, age from student
+        select id, name, email, age
+        from student
+    </select>
+
+
+    <resultMap id="myStudentMap" type="com.bjpowernode.domain.MyStudent">
+        <!--列名和java属性的关系-->
+        <id column="id" property="stuid"/>
+        <!--非主键列，使用result-->
+        <result column="name" property="stuname"/>
+        <result column="email" property="stuemail"/>
+        <result column="age" property="stuage"/>
+
+    </resultMap>
+    <!--列名和属性名一样：第一种方式-->
+    <select id="selectMyStudent" resultMap="myStudentMap">
+        select id, name, email, age
+        from student
+    </select>
+    <!--
+        列名和属性名不一样：第二种方式
+        resultType的默认原则是同名的列值复制给同名的属性，使用列别名(java对象的属性名）
+    -->
+    <select id="selectDiffColProperty" resultType="com.bjpowernode.domain.MyStudent">
+        select id as stuid, name as stuname, email as stuemail, age as stuage
+        from student
     </select>
 
 </mapper>

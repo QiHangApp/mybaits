@@ -1,13 +1,11 @@
 import com.bjpowernode.dao.StudentDao;
+import com.bjpowernode.domain.MyStudent;
 import com.bjpowernode.domain.Student;
 import com.bjpowernode.utils.MyBatisUtils;
-import com.bjpowernode.vo.QueryParam;
 import com.bjpowernode.vo.ViewStudent;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
-import java.awt.*;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,11 +20,12 @@ public class TestMyBatis {
         //mybatis动态代理机制
         StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
         //com.sun.proxy.$Proxy2 : jdk的动态代理
-        System.out.println("dao="+ studentDao.getClass().getName());
+        System.out.println("dao=" + studentDao.getClass().getName());
         Student student = studentDao.selectStudentById(1007);
         System.out.println(student);
         sqlSession.close();
     }
+
     @Test
     public void testSelectMutilParam() {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
@@ -35,7 +34,7 @@ public class TestMyBatis {
         List<Student> students = dao.selectMultiParam("李四", 20);
 
         for (Student student : students) {
-            System.out.println("学生="+student);
+            System.out.println("学生=" + student);
         }
         sqlSession.close();
     }
@@ -84,6 +83,31 @@ public class TestMyBatis {
 
         for (Student student : students) {
             System.out.println("学生 = " + student);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectAllStudents2() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<MyStudent> myStudents = dao.selectMyStudent();
+
+        for (MyStudent myStudent : myStudents) {
+            System.out.println("学生 = " + myStudent);
+        }
+        sqlSession.close();
+    }
+    @Test
+    public void testSelectDiffcolProperty() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<MyStudent> myStudents = dao.selectDiffColProperty();
+
+        for (MyStudent myStudent : myStudents) {
+            System.out.println("########学生 = " + myStudent);
         }
         sqlSession.close();
     }

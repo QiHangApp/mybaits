@@ -1,7 +1,7 @@
 package com.bjpowernode.dao;
 
+import com.bjpowernode.domain.MyStudent;
 import com.bjpowernode.domain.Student;
-import com.bjpowernode.vo.QueryParam;
 import com.bjpowernode.vo.ViewStudent;
 import org.apache.ibatis.annotations.Param;
 
@@ -31,5 +31,9 @@ public interface StudentDao {
      * 使用resultMap定义映射关系
      */
     List<Student> selectAllStudents();
+
+    List<MyStudent> selectMyStudent();
+
+    List<MyStudent> selectDiffColProperty();
 }
 

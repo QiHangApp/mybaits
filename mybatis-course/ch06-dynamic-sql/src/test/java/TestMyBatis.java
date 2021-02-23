@@ -96,7 +96,6 @@ public class TestMyBatis {
         Student s1 = new Student();
         s1.setId(1002);
         stuList.add(s1);
-
         s1 = new Student();
         s1.setId(1005);
         stuList.add(s1);

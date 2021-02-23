@@ -9,6 +9,7 @@
         <module name="ch02-mybatis-dao" />
         <module name="ch03-proxy-dao" />
         <module name="ch04-param" />
+        <module name="ch06-dynamic-sql" />
         <module name="ch01-hello-mybatis" />
         <module name="ch05-return-result" />
       </profile>
@@ -19,9 +20,18 @@
       <module name="ch03-proxy-dao" target="11" />
       <module name="ch04-param" target="11" />
       <module name="ch05-return-result" target="11" />
+      <module name="ch06-dynamic-sql" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding utf-8" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ch01-hello-mybatis" options="" />
+      <module name="ch02-mybatis-dao" options="" />
+      <module name="ch03-proxy-dao" options="" />
+      <module name="ch04-param" options="" />
+      <module name="ch05-return-result" options="" />
+      <module name="ch06-dynamic-sql" options="" />
+    </option>
   </component>
 </project>

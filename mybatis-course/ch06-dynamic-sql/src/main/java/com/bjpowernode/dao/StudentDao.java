@@ -15,5 +15,11 @@ public interface StudentDao {
 
     //where使用
     List<Student> selectStudentWhere(Student student);
+
+    //foreach 用法 1
+    List <Student> selectForeachOne(List<Integer> idlsit);
+
+    //foreach 用法 2
+    List<Student> selectForeachTwo(List<Student> stulist);
 }
 

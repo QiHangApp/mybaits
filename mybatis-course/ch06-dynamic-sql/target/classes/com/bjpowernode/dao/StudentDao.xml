@@ -43,7 +43,7 @@
     </select>
     <select id="selectForeachTwo" resultType="com.bjpowernode.domain.Student">
         select * from student where id in
-        <foreach collection="list" item="s" open="(" close=")" separator=",">
+        <foreach collection="list" item="stu" open="(" close=")" separator=",">
             #{stu.id}
         </foreach>
     </select>

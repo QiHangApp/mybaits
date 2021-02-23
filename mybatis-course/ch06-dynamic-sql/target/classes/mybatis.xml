@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+    <!--指定properties文件的位置，从类路径根开始找文件-->
+    <properties resource="jdbc.properties"/>
+
     <!--settings：控制mybatis全局行为-->
     <settings>
         <!--设置mybatis输出日志-->
@@ -26,16 +29,32 @@
     </typeAliases>
     <environments default="mydev">
         <environment id="mydev">
+            <!--
+                transactionManager:mybatis提交事务的方式
+                    type：事务的处理的类型
+                        1）JDBC：表示mybatis底层是调用JDBC中的Connection对象，commit，rollback
+                        2）MANAGED：把mybatis的事务处理委托给其他容器（一个服务器软件，一个框架（spring））
+
+            -->
             <transactionManager type="JDBC"/>
+            <!--
+                dataSource:表示数据源，java体系中，规定实现了javax.sql.DataSource接口的都是数据源。
+                            数据源表示Connection对象的。
+                type:指定数据源的类型
+                    1）POOLED：使用连接池，mybatis会创建PooledDataSource类
+                    2）UNPOOLED：不使用连接池，在每次执行sql语句，先创建连接，执行sql，在关闭连接
+                                mybatis会创建一个UnPooledDatasource，管理Connection对象的使用
+                    3）JNDI：java命名和目录服务（windows注册表）
+            -->
             <dataSource type="POOLED">
                 <!--数据库的驱动类名-->
-                <property name="driver" value="org.mariadb.jdbc.Driver"/>
+                <property name="driver" value="${jdbc.driver}"/>
                 <!--连接数据库的url字符串-->
-                <property name="url" value="jdbc:mariadb://127.0.0.1:3306/ssm"/>
+                <property name="url" value="${jdbc.url}"/>
                 <!--访问数据库的用户名-->
-                <property name="username" value="root"/>
+                <property name="username" value="${jdbc.user}"/>
                 <!--密码-->
-                <property name="password" value="qihang"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
 

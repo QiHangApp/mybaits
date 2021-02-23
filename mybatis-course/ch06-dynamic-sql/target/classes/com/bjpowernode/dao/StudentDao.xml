@@ -28,7 +28,7 @@
         where: <where> <if> <if>...</where>
     -->
     <select id="selectStudentWhere" resultType="com.bjpowernode.domain.Student">
-        select id, name, email, age from student
+        <include refid="studentSql"/>
         <where>
             <if test="name != null and name != '' ">
                 name = #{name}
@@ -41,7 +41,7 @@
 
     <!--foreach使用1, List<Integer>-->
     <select id="selectForeachOne" resultType="com.bjpowernode.domain.Student">
-        <include refid="studentSql"/>
+        select * from student where id in
         <foreach collection="list" item="myid"  open="(" close=")" separator=",">
             #{myid}
         </foreach>

@@ -2,6 +2,7 @@ import com.bjpowernode.dao.StudentDao;
 import com.bjpowernode.domain.Student;
 import com.bjpowernode.utils.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
+import com.github.pagehelper.PageHelper;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -102,6 +103,22 @@ public class TestMyBatis {
 
 
         List<Student> students = studentDao.selectForeachTwo(stuList);
+        for (Student student : students) {
+            System.out.println("foreachone === " + student);
+        }
+    }
+
+    @Test
+    public void testSelectAllPageHelper() {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        //mybatis动态代理机制
+        StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+
+        //加入PageHelper的方法，分一哦
+        //pageNum：第几页，从一开始
+        //pageSize：一页中有多少行数据
+        PageHelper.startPage(1,3);
+        List<Student> students = studentDao.selectAll();
         for (Student student : students) {
             System.out.println("foreachone === " + student);
         }

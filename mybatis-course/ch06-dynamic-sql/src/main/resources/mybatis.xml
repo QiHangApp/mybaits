@@ -27,6 +27,11 @@
         <package name="com.bjpowernode.domain"/>
         <package name="com.bjpowernode.vo"/>
     </typeAliases>
+
+    <!--配置插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+    </plugins>
     <environments default="mydev">
         <environment id="mydev">
             <!--

@@ -53,4 +53,8 @@
         </foreach>
     </select>
 
+    <select id="selectAll" resultType="com.bjpowernode.domain.Student">
+        select * from student order by id
+    </select>
+
 </mapper>
